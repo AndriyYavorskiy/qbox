@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang='us'>
+	<head>
+		<title>Muskox</title>
+		<meta charset="utf-8">
+		<link rel='stylesheet' href='general.css'>
+		<link rel='stylesheet' href='components.css'>
+	</head>
+	<body>
+		<div class='page'>
+			<div class='row nav'>
+				<div class='less flex'>
+					<div style='margin: auto;'>
+						<a href='#greeting'><b>Muskox.js</b></a>
+					</div>
+					<div class='flex' style='width: 600px; margin: auto;'>
+						<div><a href='#greeting' class='active'>Greeting started</a></div>
+						<div><a href='#components'>Components</a></div>
+						<div><a href='#documentation'>Documentation</a></div>
+						<div><a href='#lookcode'>Look at code</a></div>
+					</div>
+				</div>
+			</div>
+			<div class='row subar'>
+				<h1>Are u sure? If so, go and</h1>
+				<a href="awesome.js" class='dl' download>Download MuskoxJS</a>
+			</div>
+			<main>
+				<div class='less clear flex'>
+					<div class='subnav left'>
+						<div class='item'>Tabs</div>
+						<div class='item active'>Drag</div>
+						<div class='item'>Modal</div>
+						<div class='item'>Scroll</div>
+					</div>
+					<div class='content'>
+						<block class='component'>
+								<tab class='c'>One</tab>
+								<tab class='c'>Two</tab>
+								<tab class='c'>Three</tab>
+								<tabbox id='raw3'><h1>Tabbox one</h1></tabbox>
+								<tabbox id='raw4'><h1>Tabbox two</h1></tabbox>
+								<tabbox id='raw5'><h1>Tabbox three</h1></tabbox>
+						</block>
+						<code>
+							<markup>
+								<pre>
+&lt;block class='component'&gt;
+	
+&lt;/block&gt;
+								</pre>
+							</markup>
+							<css>
+								<pre>
+block{
+	
+}
+								</pre>
+							</css>
+							<acts>
+								<pre>
+alert('hello!');
+								</pre>
+							</acts>
+						</code>
+					</div>
+				</div>
+			</main>
+			<div class='row'>
+
+			</div>
+		</div>
+		
+		<script src='muskox.js'></script>
+		<script>
+			
+			function _(){
+				var integer = 7;
+				alert(integer);
+			}
+			/*(function(){
+				var message = '<div class="message"><div class="head">Head</div><div class="body">Body</div></div>';
+				O_o('body').append(message);
+				var ms = document.getElementsByClassName('message');
+				O_o('.message').last().pinok();
+			})();*/
+			(function(){
+				function awesome(){
+					var app = {};
+					var message = '<div class="message"><div class="head">Head</div><div class="body">Body</div></div>';
+					app.report = function(){
+						//O_o('body').append(message);
+						return app;
+					}
+
+					return app;
+				}
+				awesome().report();
+			})();
+			(function(){
+				/* this code emmidiatly envoked function make tabs be active */
+				O_o('tabbox').hide();
+				O_o('tabbox').parent().each(function(the){
+					O_o(the).find('tabbox').first().show();
+					O_o(the).find('tab').first().addClass('active');
+				});
+				O_o('tab').click(function(){
+					var i = O_o(this).ind('tab');
+					O_o(this).parent('block').find('tab').removeClass('active');
+					O_o(this).addClass('active');
+					O_o(this).parent('block').find('tabbox').hide();
+					O_o(this).parent('block').find('tabbox').some(i).show();
+				});
+			})();
+			(function(){
+				O_o('.item').click(function(){
+					O_o(this).addClass('active');
+				});
+			})();
+		</script>
+	</body>
+</html>

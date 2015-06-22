@@ -1,0 +1,192 @@
+* {
+	  box-sizing: border-box;
+	  -moz-box-sizing: border-box;
+	  -o-box-sizing: border-box;
+	  margin: 0;
+	  padding: 0;
+	  font-family: 'Arial';
+	  transition: .2s;
+  }
+
+body {
+  background: #fff; 
+}
+  
+a{
+	text-decoration: none;
+}
+.nav{
+	//width: 100%;
+	background: url("dark_wood2.png");
+	padding: 24px;
+}
+.flex{
+	display: flex;
+}
+.nav div{
+	margin: auto;
+}
+.nav a:hover{
+	background: #D1B18C;
+	color: #fff;
+}
+.nav a.active{
+	color: #fff;
+}
+.nav a{
+	border-radius: 3px;
+	padding: 16px 24px;
+	color: #D1B18C;
+}
+.subar{
+	background: url('MuskOx.jpg') center;
+	background-size: cover;
+	height: 400px;
+	text-align: center;
+	padding: 16px;
+	//display: flex;
+	//flex-direction: column;
+}
+.subar h1{
+	color: #fff;
+	margin: 128px 0 24px 0;
+}
+.subar a{
+	margin: 0 0 24px 0;
+}
+main{
+	display: flex;
+	margin: 64px 0;
+}
+.subnav{
+	width: 28%;
+	display: inline-block;
+	min-height: 512px;
+	margin: 0 1%;
+	background: #86432F;
+	background: #6D6057;
+	box-shadow: 0 0 0 1px #eee;
+	border-radius: 4px;
+	overflow: hidden;
+}
+.item.active{
+	background: #FF5656;
+	background: #D1B18C;
+}
+.subnav :not(.active):hover{
+	background: rgba(0,0,0, .1);
+}
+.item{
+	padding: 8px 12px;
+	color: #fff;
+	cursor: pointer;
+}
+.content{
+	width: 70%;
+	display: inline-block;
+	margin: 0 1% 0 auto;
+	border-radius: 3px;
+}
+code{
+	display: block;
+	margin-top: 32px;
+}
+.dl{
+	padding: 16px 24px;
+	border-radius: 3px;
+	background: none;
+	color: #fff;
+	font-weight: 700;
+	text-decoration: none;
+	border: 1px solid #fff;
+}
+
+@-webkit-keyframes swing
+{
+    15%
+    {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateX(-5px);
+       transform: translateX(-5px);
+    }
+    50%
+    {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+@keyframes swing
+{
+    15%
+    {
+        -webkit-transform: translateX(5px);
+        transform: translateX(5px);
+    }
+    30%
+    {
+        -webkit-transform: translateX(-5px);
+        transform: translateX(-5px);
+    }
+    50%
+    {
+        -webkit-transform: translateX(3px);
+        transform: translateX(3px);
+    }
+    65%
+    {
+        -webkit-transform: translateX(-3px);
+        transform: translateX(-3px);
+    }
+    80%
+    {
+        -webkit-transform: translateX(2px);
+        transform: translateX(2px);
+    }
+    100%
+    {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+.dl:hover{
+	border-color: #f12345;
+	background: #f12345;
+    -webkit-animation: swing 1s ease;
+    animation: swing 1s ease;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}
+button {
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  padding: 8px 12px;
+  background: #db4141;
+  box-shadow: inset 0 1px 0 #F45555; }
+  button:hover {
+    background: #F45555; }
+
+.less{
+	width: 960px;
+	margin: 0 auto;
+}
+
