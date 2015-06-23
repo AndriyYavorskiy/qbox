@@ -1,0 +1,134 @@
+.nav{
+	background: url("dark_wood2.png");
+	padding: 24px;
+}
+.flex{
+	display: flex;
+}
+.nav div{
+	margin: auto;
+}
+.nav a:hover{
+	background: #D1B18C;
+	color: #fff;
+}
+.nav a.active{
+	color: #fff;
+}
+.navbuts{
+	//width: 600px;
+	//margin: 24px auto 12px auto;
+}
+.logo a{
+	font-weight: 700;
+	font-size: 1px;
+}
+.nav a{
+	border-radius: 3px;
+	padding: 12px 16px;
+	color: #D1B18C;
+	font-family: 'Slabo 27px', serif;
+	font-size: 24px;
+}
+.subar{
+	background: url('MuskOx.jpg') center;
+	background-size: cover;
+	height: 400px;
+	text-align: center;
+	padding: 16px;
+	//display: flex;
+	//flex-direction: column;
+}
+.subar h1{
+	color: #fff;
+	font-family: 'Slabo 27px', serif;
+	font-weight: 800;
+	font-size: 64px;
+	margin: 64px 0 24px 0;
+}
+.subar a{
+	margin: 0 0 24px 0;
+}
+main{
+	display: flex;
+	margin: 64px 0;
+}
+.subnav{
+	width: 28%;
+	display: inline-block;
+	min-height: 512px;
+	margin: 0 1%;
+	background: #86432F;
+	background: #6D6057;
+	background: url("dark_wood2.png");
+	box-shadow: 0 0 0 1px #eee;
+	border-radius: 4px;
+	padding: 12px;
+}
+.item.active:after{
+	content: '';
+	border: 7px solid transparent;
+	border-left: 7px solid #D1B18C;
+	position: absolute;
+	right: -12px;
+	top: 16px;
+}
+.item.active{
+	background: #FF5656;
+	background: #D1B18C;
+}
+.item.active:hover{
+	-webkit-animation: swing 1s ease;
+    animation: swing 1s ease;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}
+.subnav :not(.active):hover{
+	background: rgba(0,0,0, .2);
+}
+.item{
+	padding: 8px 12px;
+	color: #fff;
+	cursor: pointer;
+	font-family: 'Slabo 27px', serif;
+	font-size: 24px;
+	position: relative;
+	border-radius: 3px;
+}
+.content{
+	width: 70%;
+	display: inline-block;
+	margin: 0 1% 0 auto;
+	border-radius: 3px;
+	padding-left: 32px;
+}
+.content > h1{
+	color: #D1B18C;
+	margin-bottom: 32px;
+	font-family: 'Slabo 27px', serif;
+}
+code{
+	display: block;
+	margin-top: 32px;
+}
+.dl{
+	padding: 16px 24px;
+	border-radius: 3px;
+	background: none;
+	color: #fff;
+	font-weight: 700;
+	text-decoration: none;
+	border: 1px solid #fff;
+}
+.dl:hover{
+	border-color: #f12345;
+	background: #f12345;
+}
+.less{
+	width: 960px;
+	margin: 0 auto;
+}
+block{
+	border-radius: 3px;
+	display: block;
+}
