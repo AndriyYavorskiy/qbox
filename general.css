@@ -1,22 +1,19 @@
 * {
-	  box-sizing: border-box;
-	  -moz-box-sizing: border-box;
-	  -o-box-sizing: border-box;
-	  margin: 0;
-	  padding: 0;
-	  font-family: 'Arial';
-	  transition: .2s;
-  }
-
-body {
-  background: #fff; 
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Arial';
+	transition: .2s;
 }
-  
+body {
+	background: #fff; 
+}
 a{
 	text-decoration: none;
 }
 .nav{
-	//width: 100%;
 	background: url("dark_wood2.png");
 	padding: 24px;
 }
@@ -33,10 +30,20 @@ a{
 .nav a.active{
 	color: #fff;
 }
+.navbuts{
+	//width: 600px;
+	//margin: 24px auto 12px auto;
+}
+.logo a{
+	font-weight: 700;
+	font-size: 1px;
+}
 .nav a{
 	border-radius: 3px;
-	padding: 16px 24px;
+	padding: 12px 16px;
 	color: #D1B18C;
+	font-family: 'Slabo 27px', serif;
+	font-size: 24px;
 }
 .subar{
 	background: url('MuskOx.jpg') center;
@@ -49,7 +56,10 @@ a{
 }
 .subar h1{
 	color: #fff;
-	margin: 128px 0 24px 0;
+	font-family: 'Slabo 27px', serif;
+	font-weight: 800;
+	font-size: 64px;
+	margin: 64px 0 24px 0;
 }
 .subar a{
 	margin: 0 0 24px 0;
@@ -65,6 +75,7 @@ main{
 	margin: 0 1%;
 	background: #86432F;
 	background: #6D6057;
+	background: url("dark_wood2.png");
 	box-shadow: 0 0 0 1px #eee;
 	border-radius: 4px;
 	overflow: hidden;
@@ -80,12 +91,20 @@ main{
 	padding: 8px 12px;
 	color: #fff;
 	cursor: pointer;
+	font-family: 'Slabo 27px', serif;
+	font-size: 24px;
 }
 .content{
 	width: 70%;
 	display: inline-block;
 	margin: 0 1% 0 auto;
 	border-radius: 3px;
+	padding-left: 32px;
+}
+.content > h1{
+	color: #D1B18C;
+	margin-bottom: 32px;
+	font-family: 'Slabo 27px', serif;
 }
 code{
 	display: block;
