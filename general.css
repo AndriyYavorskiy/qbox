@@ -78,14 +78,22 @@ main{
 	background: url("dark_wood2.png");
 	box-shadow: 0 0 0 1px #eee;
 	border-radius: 4px;
-	overflow: hidden;
+	padding: 12px;
+}
+.item.active:after{
+	content: '';
+	border: 7px solid transparent;
+	border-left: 7px solid #D1B18C;
+	position: absolute;
+	right: -12px;
+	top: 16px;
 }
 .item.active{
 	background: #FF5656;
 	background: #D1B18C;
 }
 .subnav :not(.active):hover{
-	background: rgba(0,0,0, .1);
+	background: rgba(0,0,0, .2);
 }
 .item{
 	padding: 8px 12px;
@@ -93,6 +101,8 @@ main{
 	cursor: pointer;
 	font-family: 'Slabo 27px', serif;
 	font-size: 24px;
+	position: relative;
+	border-radius: 3px;
 }
 .content{
 	width: 70%;

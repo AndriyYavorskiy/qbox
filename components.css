@@ -8,6 +8,8 @@ tab.active{
 }
 tab:not(.active):hover{
 	background: #ffb2db;
+	
+	background: linear-gradient(#fff, #fff15e);
 }
 tab{
 	color: #555;

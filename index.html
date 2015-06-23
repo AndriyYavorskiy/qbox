@@ -116,6 +116,7 @@ alert('hello!');
 			})();
 			(function(){
 				O_o('.item').click(function(){
+					O_o(this).parent().find('.active').removeClass('active');
 					O_o(this).addClass('active');
 				});
 			})();
