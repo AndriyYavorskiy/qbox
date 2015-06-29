@@ -10,70 +10,100 @@
 		<link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
-		<div class='page'>
-			<div class='row nav'>
-				<div class='less flex'>
-					<div class='logo' style='margin: auto;'>
-						<a href='#greeting'>Muskox.js</a>
-					</div>
-					<div class='flex navbuts'>
-						<div><a href='#greeting'>Greeting started</a></div>
-						<div><a href='#components' class='active'>Components</a></div>
-						<div><a href='#documentation'>Documentation</a></div>
-						<div><a href='#lookcode'>Library</a></div>
-					</div>
+		<div class='nav'>
+			<div class='less flex'>
+				<div class='logo' style='margin: auto;'>
+					<a href='#greet-ox'>Muskox.js</a>
 				</div>
-			</div>
-			<div class='row subar'>
-				<h1>Are you sure?<br>If so, go and</h1>
-				<a href="awesome.js" class='dl' download>Download MuskoxJS</a>
-			</div>
-			<main>
-				<div class='less clear flex'>
-					<div class='subnav left'>
-						<div class='item'>Tabs</div>
-						<div class='item active'>Drag</div>
-						<div class='item'>Modal</div>
-						<div class='item'>Scroll</div>
-					</div>
-					<div class='content'>
-						<h1>Muskox's tabs</h1>
-						<block class='component'>
-								<tab class='c'>One</tab>
-								<tab class='c'>Two</tab>
-								<tab class='c'>Three</tab>
-								<tabbox id='raw3'><h1>Tabbox one</h1></tabbox>
-								<tabbox id='raw4'><h1>Tabbox two</h1></tabbox>
-								<tabbox id='raw5'><h1>Tabbox three</h1></tabbox>
-						</block>
-						<code>
-							<markup>
-								<pre>
-&lt;block class='component'&gt;
-	
-&lt;/block&gt;
-								</pre>
-							</markup>
-							<css>
-								<pre>
-block{
-	
-}
-								</pre>
-							</css>
-							<acts>
-								<pre>
-alert('hello!');
-								</pre>
-							</acts>
-						</code>
-					</div>
+				<div class='flex navbuts'>
+					<div><a href='#greet-ox'>Greeting started</a></div>
+					<div><a href='#comps-ox' class='active'>Components</a></div>
+					<div><a href='#docs-ox'>Documentation</a></div>
+					<div><a href='#code-ox'>Library</a></div>
 				</div>
-			</main>
-			<div class='row'>
-
 			</div>
 		</div>
+		<div class='row subar' id='musk'>
+			<h1>Are you sure?<br>If so, go and</h1>
+			<a href="awesome.js" class='dl' download>Download MuskoxJS</a>
+		</div>
+		<main>
+			<page id='comps-ox' class=''>
+				<div class='less clear flex'>
+					<div class='subnav left'>
+						<a href='#comps-ox?tabs-ox'><div class='item active'>Tabs</div></a>
+						<a href='#comps-ox?drag-ox'><div class='item'>Drag</div></a>
+						<a href='#comps-ox?modal-ox'><div class='item'>Modal</div></a>
+						<a href='#comps-ox?scroll-ox'><div class='item'>Scroll</div></a>
+					</div>
+					<div class='content'>
+						<comp id='tabs-ox'>
+							<h1>Muskox's tabs</h1>
+							<block class='component'>
+									<tab class='c'>One</tab>
+									<tab class='c'>Two</tab>
+									<tab class='c'>Three</tab>
+									<tabbox id='raw3'><h1>Tabbox one</h1></tabbox>
+									<tabbox id='raw4'><h1>Tabbox two</h1></tabbox>
+									<tabbox id='raw5'><h1>Tabbox three</h1></tabbox>
+							</block>
+							<code>
+								<markup>
+									<pre>
+	&lt;block class='component'&gt;
+
+	&lt;/block&gt;
+									</pre>
+								</markup>
+								<css>
+									<pre>
+	block{
+
+	}
+									</pre>
+								</css>
+								<acts>
+									<pre>
+	alert('hello!');
+									</pre>
+								</acts>
+							</code>
+						</comp>
+						<comp id='drag-ox'>
+							<h1>Drag</h1>
+							<block class='component'>
+									
+							</block>
+						</comp>
+						<comp id='modal-ox'>
+							<h1>Modal</h1>
+							<block class='component'>
+									
+							</block>
+						</comp>
+						<comp id='scroll-ox'>
+							<h1>Scroll</h1>
+							<block class='component'>
+									
+							</block>
+						</comp>
+					</div>
+				</div>
+			</page>
+			<page id='code-ox'>
+				<h1>Code page</h1>
+			</page>
+			<page id='greet-ox'>
+				<h1>Greeting page</h1>
+			</page>
+			<page id='docs-ox'>
+				<h1>Docs page</h1>
+			</page>
+		</main>
+		<div class='row'>
+
+		</div>
+		
 		
 		<script src='muskox.js'></script>
 		<script>
@@ -93,13 +123,13 @@ alert('hello!');
 					var app = {};
 					var message = '<div class="message"><div class="head">Head</div><div class="body">Body</div></div>';
 					app.report = function(){
-						//O_o('body').append(message);
+						O_o('body').append(message);
 						return app;
 					}
 
 					return app;
 				}
-				awesome().report();
+				//awesome().report();
 			})();
 			(function(){
 				/* this code emmidiatly envoked function make tabs be active */
@@ -118,10 +148,45 @@ alert('hello!');
 			})();
 			(function(){
 				O_o('.item').click(function(){
-					O_o(this).parent().find('.active').removeClass('active');
+					O_o(this).parent('div').find('.active').removeClass('active');
 					O_o(this).addClass('active');
 				});
 			})();
+			/*
+			window.addEventListener('hashchange', function(){
+				alert('hashchange!');
+			});*/
+			route = function(){
+				var com = '';
+				if(window.location.hash===''){
+					window.location.hash = '#' + O_o("page").first().attr('id') +'?tabs-ox'
+				}
+				var hash = window.location.hash;
+				var allStars = O_o('comp').getNodes();
+				if(hash.indexOf('?') > 0){
+					com = hash.substr(hash.indexOf('?')+1, hash.length);
+					hash = hash.substr(1, hash.indexOf('?')-1);
+				}else{
+					hash = hash.substring(1, hash.length);
+				}
+				O_o('page').hide();
+				O_o('#'+hash).show();
+				if(com.length > 0){
+					O_o('comp').hide();
+					O_o('#'+com).show();
+				}else{
+					O_o('comp').first().show();
+				}
+			}
+			O_o(window).event('hashchange', route);
+			route();
+			O_o('.nav').find('a').click(function(e){
+				//e.preventDefault();
+				O_o(this).parent().parent('.nav').find('.active').removeClass('active');
+				console.log(O_o(this));
+				O_o(this).addClass('active');
+			});
+			
 		</script>
 	</body>
 </html>

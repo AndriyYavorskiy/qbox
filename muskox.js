@@ -120,7 +120,7 @@ function O_o(sel){
 	self.find = function(fin){
 		ele = el;
 		if(typeof fin === 'object'){
-			el = to(fin);
+			el = fin;
 		}else{
 			if(fin.substring(0,1) === '.'){
 				fin = fin.substring(1,fin.length);
@@ -128,10 +128,8 @@ function O_o(sel){
 				if(ele.length){
 					for(var i = 0; i < ele.length; i++){
 						var finded = ele[i].getElementsByClassName(fin);
-						for(var ii = 0; ii < ele.length; ii++){
-							if(finded[ii]){
-								el.push(finded[ii]);
-							}
+						for(var u = 0; u < finded.length; u++){
+							el.push(finded[u]);
 						}
 					}
 				}else{
@@ -142,10 +140,8 @@ function O_o(sel){
 				if(ele.length){
 					for(var i = 0; i < ele.length; i++){
 						var finded = ele[i].getElementsByTagName(fin);
-						for(var ii = 0; ii < ele.length; ii++){
-							if(finded[ii]){
-								el.push(finded[ii]);
-							}
+						for(var u = 0; u < finded.length; u++){
+							el.push(finded[u]);
 						}
 					}
 				}else{
@@ -251,7 +247,9 @@ function O_o(sel){
 		if(pa){
 			getParentByClass = function(){
 				el = el.parentNode;
+				console.log(el);
 				if(el.getAttribute('class').indexOf(pa.substr(1,pa.length)) < 0){
+					console.log('Class ' + pa + ' was not found...');
 					getParentByClass();
 				}
 			}
@@ -330,6 +328,9 @@ function O_o(sel){
 		}
 		el.setAttribute('class', el.getAttribute('class') + ' ' + cl);
 	}
+	self.attr = function(at){
+		return el.getAttribute(at);
+	};
 	return self;
 }
 
