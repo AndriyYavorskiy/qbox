@@ -321,13 +321,6 @@ function O_o(sel){
 	self.hasClass = function(cl){
 		return el.className.indexOf(cl);
 	}
-	self.toggSibsOf = function(cl){
-		var all = el[0].parentNode.children;
-		for(var i = 0; i < all.length; i++){
-			all[1].setAttribute('class',all[1].className.replace(cl,''));
-		}
-		el.setAttribute('class', el.getAttribute('class') + ' ' + cl);
-	}
 	self.attr = function(at){
 		return el.getAttribute(at);
 	};
