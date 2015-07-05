@@ -23,12 +23,18 @@
 				</div>
 			</div>
 		</div>
-		<div class='row subar' id='musk'>
-			<h1>Are you sure?<br>If so, go and</h1>
-			<a href="awesome.js" class='dl jello' download>Download MuskoxJS</a>
-		</div>
 		<main>
+			<page id='greet-ox'>
+				<div class='row subar' id='musk'>
+					<h1>Are you sure?<br>If so, go and</h1>
+					<a href="awesome.js" class='dl jello' download>Download MuskoxJS</a>
+				</div>
+				<div class='less'>
+					<h1>Greeting page</h1>
+				</div>
+			</page>
 			<page id='comps-ox' class=''>
+				<mobil>Download <b>MaskOx.js</b> file...</mobil>
 				<div class='less clear flex'>
 					<div class='subnav left'>
 						<a href='#comps-ox:tabs-ox'><div class='item active'>Tabs</div></a>
@@ -90,14 +96,17 @@
 					</div>
 				</div>
 			</page>
-			<page id='code-ox'>
-				<h1>Code page</h1>
-			</page>
-			<page id='greet-ox'>
-				<h1>Greeting page</h1>
-			</page>
 			<page id='docs-ox'>
-				<h1>Docs page</h1>
+				<mobil>Download <b>MaskOx.js</b> file...</mobil>
+				<div class='less'>
+					<h1>Docs page</h1>
+				</div>
+			</page>
+			<page id='code-ox'>
+				<mobil>Download <b>MaskOx.js</b> file...</mobil>
+				<div class='less'>
+					<h1>Code page</h1>
+				</div>
 			</page>
 		</main>
 		<div class='row'>
@@ -162,18 +171,27 @@
 					window.location.hash = '#' + O_o("page").first().attr('id') +':tabs-ox'
 				}
 				var hash = window.location.hash;
-				var allStars = O_o('comp').getNodes();
+				//var allStars = O_o('comp').getNodes();
 				if(hash.indexOf(':') > 0){
 					com = hash.substr(hash.indexOf(':')+1, hash.length);
 					hash = hash.substr(1, hash.indexOf(':')-1);
 				}else{
 					hash = hash.substring(1, hash.length);
 				}
+				
+				var need = O_o('#'+hash).ind() + 1;
+				console.log(O_o('.nav').find('a').getNodes());
+				O_o('.nav').find('.active').removeClass('active');
+				O_o('.nav').find('a').some(need).addClass('active');
+					
 				O_o('page').hide();
 				O_o('#'+hash).show();
+				
+
 				if(com.length > 0){
 					O_o('comp').hide();
 					O_o('#'+com).show();
+					
 				}else{
 					O_o('comp').first().show();
 				}
@@ -182,8 +200,8 @@
 			route();
 			O_o('.nav').find('a').click(function(e){
 				//e.preventDefault();
-				O_o(this).parent().parent('.nav').find('.active').removeClass('active');
-				O_o(this).addClass('active');
+				//O_o(this).parent().parent('.nav').find('.active').removeClass('active'); 
+				//O_o(this).addClass('active');
 			});
 			
 		</script>
