@@ -109,10 +109,6 @@
 				</div>
 			</page>
 		</main>
-		<div class='row'>
-
-		</div>
-		
 		
 		<script src='muskox.js'></script>
 		<script>
@@ -157,8 +153,8 @@
 			})();
 			(function(){
 				O_o('.item').click(function(){
-					O_o(this).parent('div').find('.active').removeClass('active');
-					O_o(this).addClass('active');
+					//O_o(this).parent('div').find('.active').removeClass('active');
+					//O_o(this).addClass('active');
 				});
 			})();
 			/*
@@ -180,7 +176,7 @@
 				}
 				
 				var need = O_o('#'+hash).ind() + 1;
-				console.log(O_o('.nav').find('a').getNodes());
+				//console.log(O_o('.nav').find('a').getNodes());
 				O_o('.nav').find('.active').removeClass('active');
 				O_o('.nav').find('a').some(need).addClass('active');
 					
@@ -191,7 +187,8 @@
 				if(com.length > 0){
 					O_o('comp').hide();
 					O_o('#'+com).show();
-					
+					O_o('#'+hash).find('.subnav').find('.active').removeClass('active');
+					O_o('#'+hash).find('.item').some(O_o('#'+com).ind()).addClass('active');
 				}else{
 					O_o('comp').first().show();
 				}
