@@ -34,7 +34,7 @@
 				</div>
 			</page>
 			<page id='comps-ox' class=''>
-				<mobil>Download <b>MaskOx.js</b> file...</mobil>
+				<mobil>Download <a href="awesome.js" download><b>MaskOx.js</b></a> file...</mobil>
 				<div class='less clear flex'>
 					<div class='subnav left'>
 						<a href='#comps-ox:tabs-ox'><div class='item active'>Tabs</div></a>
@@ -84,7 +84,7 @@
 						<comp id='modal-ox'>
 							<h1>Modal</h1>
 							<block class='component'>
-									
+								<trigger class='dl'>Show modal</trigger>
 							</block>
 						</comp>
 						<comp id='scroll-ox'>
@@ -97,19 +97,29 @@
 				</div>
 			</page>
 			<page id='docs-ox'>
-				<mobil>Download <b>MaskOx.js</b> file...</mobil>
+				<mobil>Download <a href="awesome.js" download><b>MaskOx.js</b></a> file...</mobil>
 				<div class='less'>
 					<h1>Docs page</h1>
 				</div>
 			</page>
 			<page id='code-ox'>
-				<mobil>Download <b>MaskOx.js</b> file...</mobil>
+				<mobil>Download <a href="awesome.js" download><b>MaskOx.js</b></a> file...</mobil>
 				<div class='less'>
 					<h1>Code page</h1>
 				</div>
 			</page>
+			<disabler>
+				<modal>
+					<mhead>Modal header
+						<close>
+							x
+						</close>
+					</mhead>
+					<mbody>Modal body</mbody>
+					<mfooter>Modal body</mfooter>
+				</modal>
+			</disabler>
 		</main>
-		
 		<script src='muskox.js'></script>
 		<script>
 			
@@ -157,50 +167,64 @@
 					//O_o(this).addClass('active');
 				});
 			})();
-			/*
-			window.addEventListener('hashchange', function(){
-				alert('hashchange!');
-			});*/
-			route = function(){
-				var com = '';
-				if(window.location.hash===''){
-					window.location.hash = '#' + O_o("page").first().attr('id') +':tabs-ox'
-				}
-				var hash = window.location.hash;
-				//var allStars = O_o('comp').getNodes();
-				if(hash.indexOf(':') > 0){
-					com = hash.substr(hash.indexOf(':')+1, hash.length);
-					hash = hash.substr(1, hash.indexOf(':')-1);
-				}else{
-					hash = hash.substring(1, hash.length);
-				}
-				
-				var need = O_o('#'+hash).ind() + 1;
-				//console.log(O_o('.nav').find('a').getNodes());
-				O_o('.nav').find('.active').removeClass('active');
-				O_o('.nav').find('a').some(need).addClass('active');
-					
-				O_o('page').hide();
-				O_o('#'+hash).show();
-				
 
-				if(com.length > 0){
-					O_o('comp').hide();
-					O_o('#'+com).show();
-					O_o('#'+hash).find('.subnav').find('.active').removeClass('active');
-					O_o('#'+hash).find('.item').some(O_o('#'+com).ind()).addClass('active');
-				}else{
-					O_o('comp').first().show();
-				}
-			}
-			O_o(window).event('hashchange', route);
-			route();
-			O_o('.nav').find('a').click(function(e){
-				//e.preventDefault();
-				//O_o(this).parent().parent('.nav').find('.active').removeClass('active'); 
-				//O_o(this).addClass('active');
-			});
 			
+				route = function(){
+					var com = '';
+					if(window.location.hash===''){
+						window.location.hash = '#' + O_o("page").first().attr('id') +':tabs-ox'
+					}
+					var hash = window.location.hash;
+					if(hash.indexOf(':') > 0){
+						com = hash.substr(hash.indexOf(':')+1, hash.length);
+						hash = hash.substr(1, hash.indexOf(':')-1);
+					}else{
+						hash = hash.substring(1, hash.length);
+						//console.log(O_o('#'+hash).find('.subnav').find('.active'));
+						try{
+							console.log(O_o('#'+hash).find('.subnav').find('.active').attr('href'));
+						}catch(er){
+							console.log('Seems like here are no components...');
+						}
+					}
+					
+					var need = O_o('#'+hash).ind() + 1;
+					//console.log(O_o('.nav').find('a').getNodes());
+					O_o('.nav').find('.active').removeClass('active');
+					O_o('.nav').find('a').some(need).addClass('active');
+						
+					O_o('page').hide();
+					O_o('#'+hash).show();
+					
+
+					if(com.length > 0){
+						O_o('comp').hide();
+						O_o('#'+com).show();
+						O_o('#'+hash).find('.subnav').find('.active').removeClass('active');
+						O_o('#'+hash).find('.item').some(O_o('#'+com).ind()).addClass('active');
+					}else{
+						//O_o('comp').first().show();
+					}
+				}
+				O_o(window).event('hashchange', route);
+				try{
+					//com = O_o('#'+hash).find('comp').first().attr('id');
+					//console.log(O_o('#'+hash).find('comp').first().attr('id'));
+				}catch(err){
+					//com = '';
+				}
+				route();
+				O_o('.nav').find('a').click(function(e){
+					//e.preventDefault();
+					//O_o(this).parent().parent('.nav').find('.active').removeClass('active'); 
+					//O_o(this).addClass('active');
+				});
+			O_o('trigger').click(function(){
+				O_o('disabler').show();
+			})
+			O_o('close').click(function(){
+				O_o(this).parent('disabler').hide();
+			})
 		</script>
 	</body>
 </html>
