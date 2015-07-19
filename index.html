@@ -32,18 +32,22 @@
 				<div class='less'>
 					<h1>Greeting page</h1>
 				</div>
+				<!--div class='subnav left'>
+					<a href='#greet-ox:one-ox'><div class='item active'>One</div></a>
+					<a href='#greet-ox:two-ox'><div class='item'>Two</div></a>
+				</div-->
 			</page>
 			<page id='comps-ox' class=''>
-				<mobil>Download <a href="awesome.js" download><b>MaskOx.js</b></a> file...</mobil>
+				<mobil>Download <a href="awesome.js" download><b>MuskOx.js</b></a> file...</mobil>
 				<div class='less clear flex'>
 					<div class='subnav left'>
-						<a href='#comps-ox:tabs-ox'><div class='item active'>Tabs</div></a>
-						<a href='#comps-ox:drag-ox'><div class='item'>Drag</div></a>
-						<a href='#comps-ox:modal-ox'><div class='item'>Modal</div></a>
-						<a href='#comps-ox:scroll-ox'><div class='item'>Scroll</div></a>
+						<a href='#comps-ox:tabs'><div class='item active'>Tabs</div></a>
+						<a href='#comps-ox:drag'><div class='item'>Drag</div></a>
+						<a href='#comps-ox:modal'><div class='item'>Modal</div></a>
+						<a href='#comps-ox:scroll'><div class='item'>Scroll</div></a>
 					</div>
 					<div class='content'>
-						<comp id='tabs-ox'>
+						<comp id='tabs'>
 							<h1>Muskox's tabs</h1>
 							<block class='component'>
 									<tab class='c'>One</tab>
@@ -75,19 +79,19 @@
 								</acts>
 							</code>
 						</comp>
-						<comp id='drag-ox'>
+						<comp id='drag'>
 							<h1>Drag</h1>
-							<block class='component'>
-									
+							<block class='component drag-track'>
+								<button type='button' class='draggable'>Drag<br>me!</button>
 							</block>
 						</comp>
-						<comp id='modal-ox'>
+						<comp id='modal'>
 							<h1>Modal</h1>
 							<block class='component'>
 								<trigger class='dl'>Show modal</trigger>
 							</block>
 						</comp>
-						<comp id='scroll-ox'>
+						<comp id='scroll'>
 							<h1>Scroll</h1>
 							<block class='component'>
 									
@@ -97,13 +101,13 @@
 				</div>
 			</page>
 			<page id='docs-ox'>
-				<mobil>Download <a href="awesome.js" download><b>MaskOx.js</b></a> file...</mobil>
+				<mobil>Download <a href="awesome.js" download><b>MuskOx.js</b></a> file...</mobil>
 				<div class='less'>
 					<h1>Docs page</h1>
 				</div>
 			</page>
 			<page id='code-ox'>
-				<mobil>Download <a href="awesome.js" download><b>MaskOx.js</b></a> file...</mobil>
+				<mobil>Download <a href="awesome.js" download><b>MuskOx.js</b></a> file...</mobil>
 				<div class='less'>
 					<h1>Code page</h1>
 				</div>
@@ -181,11 +185,6 @@
 					}else{
 						hash = hash.substring(1, hash.length);
 						//console.log(O_o('#'+hash).find('.subnav').find('.active'));
-						try{
-							console.log(O_o('#'+hash).find('.subnav').find('.active').attr('href'));
-						}catch(er){
-							console.log('Seems like here are no components...');
-						}
 					}
 					
 					var need = O_o('#'+hash).ind() + 1;
@@ -199,9 +198,17 @@
 
 					if(com.length > 0){
 						O_o('comp').hide();
-						O_o('#'+com).show();
-						O_o('#'+hash).find('.subnav').find('.active').removeClass('active');
-						O_o('#'+hash).find('.item').some(O_o('#'+com).ind()).addClass('active');
+						if(O_o('#'+com).getNodes() !== null){
+							O_o('#'+com).show();
+						}else{
+							console.info('Here is no component with such id: ' + com)
+						}
+						try{
+							O_o('#'+hash).find('.subnav').find('.active').removeClass('active');
+							O_o('#'+hash).find('.item').some(O_o('#'+com).ind()).addClass('active');
+						}catch(er){
+							console.info('There are no subnavigation at this page!');
+						}
 					}else{
 						//O_o('comp').first().show();
 					}
@@ -225,6 +232,27 @@
 			O_o('close').click(function(){
 				O_o(this).parent('disabler').hide();
 			})
+			
+			
+			//(function(){
+				O_o('.draggable').event('mousedown', function(e){
+					var elem = O_o(this), 
+							   OX = O_o(this).parent('.drag-track').left(), 
+							   OY = O_o(this).parent('.drag-track').top(),
+							   SY = e.clientY - OY - elem.top(),
+							   SX = e.clientX - OX - elem.left();
+							   elem.css('position', 'absolute');
+					O_o(document).event('mousemove', onMouseMove);
+					O_o(document).event('mouseup', onMouseUp);
+					function onMouseMove(ev){
+						elem.css('left', ev.clientX - OX - SX + 'px');
+						elem.css('top', ev.clientY - OY - SY + 'px');
+					}
+					function onMouseUp(){
+						O_o(document).done('mousemove', onMouseMove);
+					}
+				});
+			
 		</script>
 	</body>
 </html>

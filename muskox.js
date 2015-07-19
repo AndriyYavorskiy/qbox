@@ -6,6 +6,7 @@ function O_o(sel){
 		if(sel.substring(0,1) == '#'){
 			sel = sel.substring(1,sel.length);
 			el = document.getElementById(sel);
+			//el = el || [];
 		}else if(sel.substring(0,1) == '.'){
 			sel = sel.substring(1,sel.length);
 			el = document.getElementsByClassName(sel);
@@ -85,6 +86,16 @@ function O_o(sel){
 		}
 		return self;
 	}
+	self.done = function(ev, cb){
+		if(el.length){
+			every(el, function(e){
+				e.removeEventListener(ev, cb)
+			});
+		}else{
+			el.removeEventListener(ev, cb);
+		}
+		return self;
+	}
 	self.click = function(cb){
 		if(cb){
 			if(el.length){
@@ -118,36 +129,42 @@ function O_o(sel){
 		return self;
 	}
 	self.find = function(fin){
-		ele = el;
-		if(typeof fin === 'object'){
-			el = fin;
-		}else{
-			if(fin.substring(0,1) === '.'){
-				fin = fin.substring(1,fin.length);
-				el = [];
-				if(ele.length){
-					for(var i = 0; i < ele.length; i++){
-						var finded = ele[i].getElementsByClassName(fin);
-						for(var u = 0; u < finded.length; u++){
-							el.push(finded[u]);
-						}
-					}
-				}else{
-					el = ele.getElementsByClassName(fin);
-				}
+		var ele, find = fin;
+		try{
+			ele = el;
+			if(typeof fin === 'object'){
+				el = fin;
 			}else{
-				el = [];
-				if(ele.length){
-					for(var i = 0; i < ele.length; i++){
-						var finded = ele[i].getElementsByTagName(fin);
-						for(var u = 0; u < finded.length; u++){
-							el.push(finded[u]);
+				if(fin.substring(0,1) === '.'){
+					fin = fin.substring(1,fin.length);
+					el = [];
+					if(ele.length){
+						for(var i = 0; i < ele.length; i++){
+							var finded = ele[i].getElementsByClassName(fin);
+							for(var u = 0; u < finded.length; u++){
+								el.push(finded[u]);
+							}
 						}
+					}else{
+						el = ele.getElementsByClassName(fin);
 					}
 				}else{
-					el = ele.getElementsByTagName(fin);
+					el = [];
+					if(ele.length){
+						for(var i = 0; i < ele.length; i++){
+							var finded = ele[i].getElementsByTagName(fin);
+							for(var u = 0; u < finded.length; u++){
+								el.push(finded[u]);
+							}
+						}
+					}else{
+						el = ele.getElementsByTagName(fin);
+					}
 				}
 			}
+		}catch(er){
+			console.warn('Error while finding elements... Find parameter: ' + find);
+			console.warn(ele);
 		}
 		return self;
 	},
@@ -247,7 +264,7 @@ function O_o(sel){
 		if(pa){
 			getParentByClass = function(){
 				el = el.parentNode;
-				console.log(el);
+				//console.log(el);
 				if(el.getAttribute('class').indexOf(pa.substr(1,pa.length)) < 0){
 					console.log('Class ' + pa + ' was not found...');
 					getParentByClass();
@@ -324,14 +341,24 @@ function O_o(sel){
 	self.attr = function(at){
 		return el.getAttribute(at);
 	};
+	self.left = function(){
+		return el.offsetLeft;
+	}
+	self.top = function(){
+		return el.offsetTop;
+	}
 	return self;
+	function every(ay, cb){
+		for(var i = 0; i<ay.length; i++){
+			cb(ay[i]);
+			inde = i;
+		}
+	}
+	every([1,3,7], function(the){console.log(the)});
+	self.left = el;
 }
 
-function forEach(ay, cb){
-	for(var i = 0; i<ay.length; i++){
-		cb(ay[i]);
-	}
-}
+
 /*
 forEach(O_o('tabbox').parent().find('tabbox').parent().getNodes(), function(the){
 	O_o(the).find('tabbox').first().show();
