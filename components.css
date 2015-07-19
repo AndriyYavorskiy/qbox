@@ -27,14 +27,11 @@ tabbox{
 
 
 
-trigger.dl:hover{
-	color: #fff;
-	box-shadow: 0 0 0 1px #FF7CAE;
+trigger.mod:hover{
+	
 }
-trigger.dl{
-	color: #FF7CAE;
-	cursor: pointer;
-	box-shadow: 0 0 8px #ccc, 0 0 0 1px #bbb;
+trigger.mod{
+	
 }
 
 

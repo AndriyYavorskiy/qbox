@@ -23,6 +23,7 @@ button {
 	color: #FF7CAE;
 	cursor: pointer;
 	box-shadow: 0 0 8px #ccc, 0 0 0 1px #bbb;
+	font-size: 18px;
 }
 button:hover {
 	color: #fff;

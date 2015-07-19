@@ -6,6 +6,9 @@
 .flex{
 	display: flex;
 }
+.nav .less{
+	display: flex;
+}
 .nav div{
 	margin: auto;
 }
@@ -17,8 +20,7 @@
 	color: #fff;
 }
 .navbuts{
-	//width: 600px;
-	//margin: 24px auto 12px auto;
+	display: flex;
 }
 .nav .logo a{
 	font-weight: 700;
@@ -47,7 +49,7 @@ mobil{
   margin: 0 0 32px 0;
 }
 .subar{
-	background: url('MuskOx.jpg') center;
+	background: url('MuskOx (1).jpg') center;
 	background-size: cover;
 	height: 400px;
 	text-align: center;
@@ -143,7 +145,7 @@ code{
 .dl{
 	padding: 16px 24px;
 	border-radius: 3px;
-	background: none;
+	//background: none;
 	color: #fff;
 	font-weight: 700;
 	text-decoration: none;
@@ -153,7 +155,16 @@ code{
 	border-color: #f12345;
 	border-color: #FF3278;
 	border: none;
-	background: #f12345;
+	//background: #f12345;
+	background: #ffcedd; /* Old browsers */
+	background: -moz-linear-gradient(top,  #ffcedd 1%, #ff89ae 50%, #ff89ae 50%, #ff6b99 51%, #ff1664 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffcedd), color-stop(50%,#ff89ae), color-stop(50%,#ff89ae), color-stop(51%,#ff6b99), color-stop(100%,#ff1664)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #ffcedd 1%,#ff89ae 50%,#ff89ae 50%,#ff6b99 51%,#ff1664 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #ffcedd 1%,#ff89ae 50%,#ff89ae 50%,#ff6b99 51%,#ff1664 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #ffcedd 1%,#ff89ae 50%,#ff89ae 50%,#ff6b99 51%,#ff1664 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #ffcedd 1%,#ff89ae 50%,#ff89ae 50%,#ff6b99 51%,#ff1664 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffcedd', endColorstr='#ff1664',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(#FF7CAE,#FF3278);
 }
 page{
 	margin: 0 auto;
@@ -231,4 +242,27 @@ close:hover{
 	color: #AE713F;
 	color: #FF3278;
 	background: #fff;
+}
+
+@media (max-width:960px){
+	.logo{
+		width: 100%;
+		text-align: center;
+		
+	}
+	.nav .navbuts{
+		width: 100%;
+		//position: absolute;
+		margin-top: 24px;
+	}
+	.nav .less{
+		display: block;
+	}
+	.navbuts div{
+		float: left;
+		//margin: 0 0 0 18px;
+	}
+	.subar{
+		background: url('muskox.jpg') center;
+	}
 }
