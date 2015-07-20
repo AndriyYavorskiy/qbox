@@ -107,11 +107,14 @@
 			
 			//(function(){
 				O_o('.draggable').event('mousedown', function(e){
+					e.preventDefault();
 					var elem = O_o(this), 
 							   OX = O_o(this).parent('.drag-track').left(), 
 							   OY = O_o(this).parent('.drag-track').top(),
-							   SY = e.clientY - OY - elem.top(),
-							   SX = e.clientX - OX - elem.left();
+							   SX = e.clientX - OX - elem.left(),
+							   SY = e.clientY - OY - elem.top();
+							   X = OX - SX;
+							   Y = OY - SX;
 							   elem.css('position', 'absolute');
 					O_o(document).event('mousemove', onMouseMove);
 					O_o(document).event('mouseup', onMouseUp);
@@ -123,3 +126,26 @@
 						O_o(document).done('mousemove', onMouseMove);
 					}
 				});
+				
+			O_o('.remover').click(function(){
+				var parent = O_o(this).parent('mobil'),
+				i = parent.getNodes().clientHeight,
+				quatro = i / 3;
+				parent.css('overflow','hidden');
+				function liquidate(height, time, step){
+					setTimeout(function(){
+						height -= step;
+						parent.css('height', height+'px');
+						console.log(height);
+						if(height > quatro){
+							liquidate(height, time, step);
+						}else if(height <= quatro && height >= 1){
+							liquidate(height, 100, 1);
+						}else if(height < 1){
+							//parent.hide();
+							return;
+						}
+					}, time);
+				};
+				liquidate(i, 24, 3);
+			});

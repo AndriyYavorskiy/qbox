@@ -2,6 +2,7 @@
 	background: url("dark_wood2.png");
 	box-shadow: inset 0 12px 32px rgba(236, 185, 118, .3);
 	padding: 24px;
+	margin-bottom: 48px;
 }
 .flex{
 	display: flex;
@@ -42,17 +43,33 @@
 	font-size: 24px;
 }
 mobil{
-  padding: 12px 24px;
   //background: #D1B18C;
   box-shadow: 0 0 12px rgba(80, 66, 56, .2);
   display: block;
-  margin: 0 0 32px 0;
+  margin: -48px 0 32px 0;
+  position: relative;
+}
+mobil .remover:hover{
+	background: #FF7CAE;
+	color: #fff;
+}
+mobil .remover{
+	border-radius: 2px;
+	cursor: pointer;
+	right: 12px;
+	top: 12px;
+	padding: 0 4px;
+	position: absolute;
+}
+mobil div{
+  padding: 12px 24px;
 }
 .subar{
 	background: url('MuskOx (1).jpg') center;
 	background-size: cover;
 	height: 400px;
 	text-align: center;
+	margin-top: -48px;
 	padding: 16px;
 	//display: flex;
 	//flex-direction: column;
