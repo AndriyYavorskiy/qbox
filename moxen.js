@@ -136,7 +136,7 @@
 					setTimeout(function(){
 						height -= step;
 						parent.css('height', height+'px');
-						console.log(height);
+						//console.log(height);
 						if(height > quatro){
 							liquidate(height, time, step);
 						}else if(height <= quatro && height >= 1){
@@ -149,3 +149,30 @@
 				};
 				liquidate(i, 24, 3);
 			});
+			
+			
+			
+			(/* preloader driver */
+			function(){O_o('#preload').click(function(){
+				var l = 1, e = 80;
+				o = O_o(this).parent().find('.gum').first();
+				v = O_o(this).parent().find('.gum-track').first().width();
+				console.log('S ' + v);
+				preload(l, o, v, e);
+			})
+				
+			function preload(i, el, w, t){
+				i*=1.2;
+				i = i<w ? i : w;
+				console.log(i);
+				setTimeout(function(){
+					el.css('width', i+'px');
+					el.html(i > 70 ? parseInt(i / w * 100)+'%' : '...');
+					if(i !== w){
+						t*=0.98;
+						preload(i, el, w, t);
+					}
+				}, t);
+			}})();
+				
+			

@@ -120,9 +120,17 @@ function O_o(sel){
 	}
 	self.hide = function(){
 		if(el.length){
+			every(el, function(z, i){
+				z.style.display = 'none';
+			});/*
 			for(var i=0; i<el.length; i++){
 				el[i].style.display = 'none';
 			}
+			every(el, function(z, i){
+				z.style.display = 'none';
+				console.log('Element with index: ' + i + ' was hidden...');
+				console.log({elem:z});
+			}, 1);*/
 		}else{
 			el.style.display = 'none';
 		}
@@ -347,17 +355,36 @@ function O_o(sel){
 	self.top = function(){
 		return el.offsetTop;
 	}
+	self.width = function(){
+		return el.offsetWidth;
+	}
+	self.height = function(){
+		return el.offsetHeight;
+	}
 	return self;
 	function every(ay, cb){
+		x = 0;
 		for(var i = 0; i<ay.length; i++){
-			cb(ay[i]);
+			cb(ay[i], x);
 			inde = i;
+			x++;
 		}
 	}
-	every([1,3,7], function(the){console.log(the)});
-	self.left = el;
 }
+/*
+	function every(ay, cb, x){
+		if(x){
+			x = 0;
+		}
+		for(var i = 0; i<ay.length; i++){
+			cb(ay[i], x);
+			inde = i;
+			x++;
+		}
+	}
+*/
 
+	//every([1,3,7], function(the, u){console.log(the + ' ' +u)}, 1);
 
 /*
 forEach(O_o('tabbox').parent().find('tabbox').parent().getNodes(), function(the){

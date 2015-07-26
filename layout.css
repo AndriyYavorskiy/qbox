@@ -265,7 +265,8 @@ close:hover{
 	.logo{
 		width: 100%;
 		text-align: center;
-		
+		border-bottom: 1px solid rgba(209, 177, 140, 0.4);
+		padding: 12px;
 	}
 	.nav .navbuts{
 		width: 100%;
