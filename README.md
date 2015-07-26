@@ -1,2 +1,2 @@
-# qbox
+# muskox
 extremely small ui-framework
